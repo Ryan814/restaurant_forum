@@ -1,0 +1,2 @@
+module Admon::RestaurantsHelper
+end
