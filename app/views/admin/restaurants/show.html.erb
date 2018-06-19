@@ -7,4 +7,8 @@ Description:<%= @restaurant.description %><br>
 
 <br>
 
+<%= link_to @restaurant.prev.name, admin_restaurant_path(@restaurant.prev) if @restaurant.prev %>
+<%= link_to @restaurant.next.name, admin_restaurant_path(@restaurant.next) if @restaurant.next%>
+
+<br>
 <%= link_to 'Back to index', admin_restaurants_path %>
