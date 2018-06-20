@@ -32,8 +32,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # Use CarrierWave for upload image
 gem 'carrierwave'
-# Use FFaker fo fake data
+# Use FFaker fof fake data
 gem 'ffaker'
+# Use Kaminari for page
+gem 'kaminari'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
