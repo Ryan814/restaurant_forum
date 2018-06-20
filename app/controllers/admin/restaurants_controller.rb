@@ -43,6 +43,7 @@ class Admin::RestaurantsController < ApplicationController
     end
   end
 
+  #使用before_action傳入變數
   def destroy
     @restaurant.destroy
     redirect_to admin_restaurants_path
