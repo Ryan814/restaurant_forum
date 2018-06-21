@@ -1,33 +1,57 @@
 <!--幫助使用者理解退回內容 -->
-<% if @restaurant.errors.any? %>
-  <h2>We have some errors here!</h2>
-  <ul>
-    <% @restaurant.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>    
-<% end %>
+<div class="container">
+  <div class="row">
+
+    <% if @restaurant.errors.any? %>
+    <h2>We have some errors here!</h2>
+    <ul>
+      <% @restaurant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <hr>
+    <% end %>    
+    
+  
+
 
 <!-- 新增表單內容 -->
-<%= form_for [:admin, @restaurant] do |f| %>
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name%>
+    <%= form_for [:admin, @restaurant] do |f| %>
 
-  <%= f.label :tel, "Tel" %>
-  <%= f.text_field :tel %>
+      <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
 
-  <%= f.label :adderss, "Address" %>
-  <%= f.text_field :address %>
+      <div class="form-group">
+        <%= f.label :tel, "Tel" %>
+        <%= f.text_field :tel, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address, class: "form-control"%>
+      </div>
 
-  <%= f.label :opening_hours, "Opening Hours" %>
-  <%= f.text_field :opening_hours %>
+      <div class="form-group">
+        <%= f.label :opening_hours, "Opening Hours" %>
+        <%= f.text_field :opening_hours, class: "form-control" %>
+      </div>
 
-  <%= f.label :description, "Description" %>
-  <%= f.text_field :description %>
+      <div class="form-group">
+        <%= f.label :description, "Description" %>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
 
-  <%= f.label :image, "Photo" %>
-  <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
-  <%= f.file_field :image %>
+      <div class="form-group">
+        <%= f.label :image, "Photo" %>
+        <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+        <%= f.file_field :image %>
+      </div>
 
-  <%= f.submit %>
-<% end %>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
