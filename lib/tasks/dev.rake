@@ -26,6 +26,9 @@ namespace :dev do
       User.create!(email: FFaker::Name.first_name + "@mail.com", 
         password: "12345678")
     end
+    User.each do |user|
+      user.update(name: user.email.split('@').first)
+    end
     puts "have created fake users"
     puts "now you have #{User.count} users data"
   end
