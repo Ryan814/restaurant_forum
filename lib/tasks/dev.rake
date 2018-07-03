@@ -34,10 +34,9 @@ namespace :dev do
     Comment.destroy_all
       
     Restaurant.all.each do |restaurant|
-      3.times do |comment|
-        Comment.create(content: FFaker::Lorem.phrase,
-          restaurant_id: restaurant.id,
-          user_id: User.all.sample.id)
+      3.times do
+          restaurant.create!(content: FFaker::Lorem.phrase,
+          user: User.all.sample)
       end
     end
     puts "have created fake comments"
