@@ -26,7 +26,7 @@
 
     <div class="container">
       <div class="row">
-        <% @restaurant.comments.each do |comment|%>
+        <% @comments.each do |comment|%>
         <div>
           <h4><%= comment.user.email.split("@")[0] %></h4>
           <p><%= simple_format comment.content %></p>
