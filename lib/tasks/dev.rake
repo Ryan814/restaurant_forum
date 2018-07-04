@@ -19,7 +19,7 @@ namespace :dev do
   task fake_user: :environment do
     User.destroy_all
     #Default admin
-    User.create(email: "rytg156@gmail.com", password: "12345678", role: "admin")
+    User.create(email: "rytg156@gmail.com", password: "12345678", name: "RT", role: "admin")
     puts "Default admin created!"
 
     20.times do |i|
@@ -32,6 +32,14 @@ namespace :dev do
     puts "have created fake users"
     puts "now you have #{User.count} users data"
   end
+      #更精簡的假資料做法
+      #20.times do |i|
+        #user_name = FFaker::Name.first_name
+        #User.create!(
+          #name: user_name,
+          #email: "#{user_name}@example.com",
+          #password: "12345678"
+        #)
 
   task fake_comment: :environment do
     Comment.destroy_all
