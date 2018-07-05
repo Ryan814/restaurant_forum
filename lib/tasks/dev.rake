@@ -48,7 +48,7 @@ namespace :dev do
       
     Restaurant.all.each do |restaurant|
       3.times do
-          restaurant.create!(content: FFaker::Lorem.phrase,
+          restaurant.comments.create!(content: FFaker::Lorem.phrase,
           user: User.all.sample)
       end
     end
