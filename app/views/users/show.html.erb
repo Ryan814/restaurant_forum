@@ -23,6 +23,26 @@
       </div>
 
       <br>
+
+      <div class="panel panel-default panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @commented_restaurants.count.to_s + "已評論餐廳" %></h3>
+        </div>
+        <div class="panel-body panel-body-noline">
+          <% @commented_restaurants.each do |restaurant|%>
+            <%= link_to(restaurant) do %>
+              <div class="my-restaurant">
+                <div>
+                  <%= image_tag restaurant.image, class: "img-rounded"%>
+                </div>
+                <div>
+                  <p><%= restaurant.name %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     
     </div>
   </div>
