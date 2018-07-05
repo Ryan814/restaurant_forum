@@ -23,23 +23,24 @@ namespace :dev do
     puts "Default admin created!"
 
     20.times do |i|
-      User.create!(email: FFaker::Name.first_name + "@mail.com", 
-        password: "12345678")
-    end
-    User.each do |user|
-      user.update(name: user.email.split('@').first)
-    end
+      user_name = FFaker::Name.first_name
+      User.create!(
+        name: user_name,
+        email: "#{user_name}@example.com",
+        password: "12345678"
+        )
+      
     puts "have created fake users"
     puts "now you have #{User.count} users data"
   end
-      #更精簡的假資料做法
+      #舊的做法一些細節當作往後參考
       #20.times do |i|
-        #user_name = FFaker::Name.first_name
-        #User.create!(
-          #name: user_name,
-          #email: "#{user_name}@example.com",
-          #password: "12345678"
-        #)
+        #User.create!(email: FFaker::Name.first_name + "@mail.com", 
+        #password: "12345678")
+      #end
+      #User.each do |user|
+        #user.update(name: user.email.split('@').first)
+      #end
 
   task fake_comment: :environment do
     Comment.destroy_all
