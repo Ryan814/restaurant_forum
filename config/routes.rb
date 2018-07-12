@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     #瀏覽個別餐廳 Dashboard
     member do
       get :dashboard
+      post :favorite
+      post :unfavorite
     end
 
   end
