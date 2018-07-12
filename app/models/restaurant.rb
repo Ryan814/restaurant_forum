@@ -16,4 +16,9 @@ class Restaurant < ApplicationRecord
   def next
     Restaurant.where("id > ?", id).first
   end
+
+  def is_favorited?(user)
+    self.favorited_users.include?(user)
+  end
+
 end
