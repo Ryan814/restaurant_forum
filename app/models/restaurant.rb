@@ -8,6 +8,9 @@ class Restaurant < ApplicationRecord
   #餐廳擁有許多收藏者
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
+  #餐廳能被許多使用者喜歡
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
 
   def prev
     Restaurant.where("id < ?", id).last
