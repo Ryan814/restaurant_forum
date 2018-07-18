@@ -1,13 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <ul class="nav nav-tabs">
+        <li role="presentation">
+          <%= link_to "首頁", root_path %>
+        </li>
 
+        <li role="presentation">
+          <%= link_to "最新動態", feeds_restaurants_path %>
+        </li>
+        <li role="presentation" class="active" >
+          <%= link_to "Top10人氣餐廳", ranking_restaurants_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row">
+    
+    <div class="page-header">
+      <h1>Top 10 人氣餐廳<small>（收藏數最高）</small></h1>
+    </div>
 
-<% @restaurants.each do |restaurant| %>
-  <%= image_tag restaurant.image%>
-  <h4><%= restaurant.name %></h4>
-  <sapn>收藏數：<%= restaurant.favorites_count %></sapn>
-  <p><%= truncate(restaurant.description, length: 200) %></p>
-  <%= link_to "Show", restaurant_path(restaurant), class:"btn btn-primary" %>
-  <%= render partial: 'shared/favorite', locals: { restaurant: restaurant } %>
-<% end %>
+    <div>
+      <% @restaurants.each do |restaurant| %>
+        <div class="ranking-item">
+          <div class="col-md-3">
+            <%= link_to restaurant_path(restaurant) do %>
+              <%= image_tag restaurant.image, class: "img-responsive center-block"%>
+            <% end %>
+          </div>
+          <div class="col-md-9">
+            <h4>
+              <%= restaurant.name %>
+              <sapn class="label label-default">
+                收藏數：<%= restaurant.favorites_count %>
+              </sapn>
+            </h4>
+            <p><%= truncate(restaurant.description, length: 200) %></p>
+            <div>
+              <%= link_to "Show", restaurant_path(restaurant), class:"btn btn-primary" %>
+              <%= render partial: 'shared/favorite', locals: { restaurant: restaurant } %>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      <% end %>
+    </div>
+  
+  </div>
+</div>
 
   
