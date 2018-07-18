@@ -28,9 +28,10 @@ class Restaurant < ApplicationRecord
     self.liked_users.include?(user)
   end
 
-  def count_favorites
-    self.favorites_count = self.favorites.size
-    self.save
-  end
+  #已用rails內建counter_cache取代建立restaurant和favorite的model關聯
+  #def count_favorites
+    #self.favorites_count = self.favorites.size
+    #self.save
+  #end
 
 end
