@@ -55,4 +55,61 @@ namespace :dev do
     puts "have created fake comments"
     puts "now you have #{Comment.count} comments data"
   end
+
+  task fake_favorite: :environment do
+    Favorite.destroy_all
+
+    User.all.each do |user|
+      25.times do
+        user.favorites.create!(
+        restaurant: Restaurant.all.sample,
+        )
+      end
+    end
+    puts "have created fake favorite"
+    puts "now you have #{Favorite.count} favorited restaurants"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+
+    User.all.each do |user|
+      25.times do
+        user.likes.create!(
+        restaurant: Restaurant.all.sample,
+        )
+      end
+    end
+    puts "have created fake like"
+    puts "now you have #{Like.count} liked restaurants"
+  end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+
+    User.all.each do |user|
+      @users = User.where.not(id: user.id).shuffle
+      10.times do
+        user.followships.create!(
+        following: @users.pop,
+        )
+      end
+    end
+    puts "have created fake followship"
+    puts "now you have #{Followship.count} followship"
+  end
+
+  #fake all data
+  task fake_all do
+    #Rake::Task['db:drop'].execute
+    Rake::Task['db:migrate'].execute
+    Rake::Task['db:seed'].execute
+    Rake::Task['dev:fake_restaurant'].execute
+    Rake::Task['dev:fake_user'].execute
+    Rake::Task['dev:fake_comment'].execute
+    Rake::Task['dev:fake_favorite'].execute
+    Rake::Task['dev:fake_like'].execute
+    Rake::Task['dev:fake_followship'].execute
+  end
+
 end
