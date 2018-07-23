@@ -17,6 +17,10 @@ class User < ApplicationRecord
   #使用者能知道被誰追蹤
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
+
+  #使用者能有許多好友
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
