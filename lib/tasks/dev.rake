@@ -100,7 +100,7 @@ namespace :dev do
   end
 
   #fake all data
-  task fake_all do
+  task fake_all: :environment do 
     #Rake::Task['db:drop'].execute
     Rake::Task['db:migrate'].execute
     Rake::Task['db:seed'].execute
