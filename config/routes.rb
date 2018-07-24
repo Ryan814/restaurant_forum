@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   #同member作法
   resources :followships, only: [:create, :destroy]
+  resources :friendships, only: [:create, :destroy]
 
   namespace :admin do
     resources :restaurants
