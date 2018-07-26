@@ -31,64 +31,18 @@
       <br>
       
       <div class="col-md-4">
-        <div class="panel panel-default panel-info">
-          <div class=" panel-heading">
-            <h3 class="panel-title"><strong><%=@followings.count%></strong> followings</h3>
-          </div>
-          
-          <ul class="list-group">
-            <% @followings.each do |following| %>
-            <li class="list-group-item">
-              <%= link_to user_path(following) do %>
-                <%= image_tag following.avatar, height: 30, width: 30, class: "img-circle"%>
-                <%= following.name %>
-              <% end %>
-            </li>
-            <% end %>
-          </ul>
         
-        </div>
+        <%= render partial: "shared/followings"%>
 
-        <div class="panel panel-default panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title"><strong><%= @followers.count%></strong> followers</h3>
-          </div>
-
-          <ul class="list-group">
-            <li class="list-group-item">
-            <% @followers.each do |follower| %>
-              <%= link_to user_path(follower) do %>
-                <%= image_tag follower.avatar, height: 30, width: 30, class: "img-circle"%>
-                <%= follower.name%>
-              <% end %>
-            <% end %>
-            </li>
-          </ul>
-        </div>
+        <%= render partial: "shared/followers"%>
 
       </div>
 
       
       <div class="col-md-8">
-        <div class="panel panel-default panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= @commented_restaurants.count.to_s + "已評論餐廳" %></h3>
-          </div>
-          <div class="panel-body panel-body-noline">
-            <% @commented_restaurants.each do |restaurant|%>
-              <%= link_to(restaurant) do %>
-                <div class="my-restaurant">
-                  <div>
-                    <%= image_tag restaurant.image, class: "img-rounded"%>
-                  </div>
-                  <div>
-                    <p><%= restaurant.name %><p>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+        
+        <%= render partial: "shared/commented"%>
+
       </div>
     
     </div>
