@@ -27,7 +27,8 @@ namespace :dev do
       User.create!(
         name: user_name,
         email: "#{user_name}@example.com",
-        password: "12345678"
+        password: "12345678",
+        avatar: File.open(File.join(Rails.root, "public//user_img/#{rand(1..10)}.jpg")),
         )
     end
       
@@ -99,6 +100,22 @@ namespace :dev do
     puts "now you have #{Followship.count} followship"
   end
 
+  task fake_friendship: :environment do
+    Friendship.destroy_all
+
+    User.all.each do |user|
+      @users = User.where.not(id: user.id).shuffle
+      20.times do 
+        user.friendships.create!(
+        friend: @users.pop,
+        )
+      end
+    end
+    puts "have created fake friendship"
+    puts "now you have #{Friendship.count} friendship"
+  end
+
+
   #fake all data
   task fake_all: :environment do 
     #Rake::Task['db:drop'].execute
@@ -110,6 +127,7 @@ namespace :dev do
     Rake::Task['dev:fake_favorite'].execute
     Rake::Task['dev:fake_like'].execute
     Rake::Task['dev:fake_followship'].execute
+    Rake::Task['dev:fake_friendship'].execute
   end
 
 end
