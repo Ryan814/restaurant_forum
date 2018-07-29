@@ -19,6 +19,8 @@
             <li><strong><%= @followers.count %></strong> followers</li>
           </ul>
           <div><%= simple_format @user.intro %></div>
+          <div><%= link_to "好友名單", friend_list_user_path, class: "btn btn-primary" %></div>
+          <br>
           
           <% if @user.email == current_user.email %>
             <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>

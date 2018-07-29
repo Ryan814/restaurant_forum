@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>好友名單</h1>
+      </div>
+    </div>
+    <br>
+
+    <div class="col-md-12">
+      <div class="panel panel-default panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.all_friend.count.to_s + "已成為好友" %></h3>
+        </div>
+  
+        <div class="panel-body panel-body-noline">
+          <% @friends.each do |friend|%>
+            <%= link_to(friend) do %>
+              <div class="my-friend-list">
+                <div>
+                  <%= image_tag friend.avatar, class: "img-circle", size: 50%>
+                </div>
+                <div>
+                  <p><%= friend.name %><p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

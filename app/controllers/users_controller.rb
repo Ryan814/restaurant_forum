@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only:[:show, :edit, :update]
+  before_action :set_user, only:[:show, :edit, :update, :friend_list]
 
   def index
     @users = User.all
@@ -26,6 +26,10 @@ class UsersController < ApplicationController
       flash[:alert] = "Profile was failed to update"
       render :edit
     end
+  end
+
+  def friend_list
+    @friends = @user.all_friend
   end
 
   private
